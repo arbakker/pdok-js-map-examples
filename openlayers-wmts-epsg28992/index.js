@@ -8,6 +8,11 @@ import { fromLonLat } from 'ol/proj'
 import proj4 from 'proj4'
 import Projection from 'ol/proj/Projection'
 import { getTopLeft } from 'ol/extent.js'
+import LayerSwitcher from 'ol-layerswitcher'
+import 'ol-layerswitcher/src/ol-layerswitcher.css'
+
+const BRTA_ATTRIBUTION = 'Kaartgegevens: © <a href="http://www.cbs.nl">CBS</a>, <a href="http://www.kadaster.nl">Kadaster</a>, <a href="http://openstreetmap.org">OpenStreetMap</a><span class="printhide">-auteurs (<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>).</span>'
+
 
 proj4.defs('EPSG:28992', '+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +towgs84=565.417,50.3319,465.552,-0.398957,0.343988,-1.8774,4.0725 +units=m +no_defs')
 register(proj4)
@@ -22,25 +27,39 @@ for (var i = 0; i < 15; ++i) {
   matrixIds[i] = i
 }
 
-const brtWmtsLayer = new TileLayer({
-  extent: rdProjection.extent,
-  source: new WMTSSource({
-    url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts',
-    layer: 'brtachtergrondkaartgrijs',
-    matrixSet: 'EPSG:28992',
-    format: 'image/png',
-    projection: rdProjection,
-    tileGrid: new WMTSTileGrid({
-      origin: getTopLeft(rdProjection.getExtent()),
-      resolutions: resolutions,
-      matrixIds: matrixIds
-    }),
-    style: 'default'
+function getWmtsLayer (layername) {
+  return new TileLayer({
+    type: 'base',
+    title: `${layername} WMTS`,
+    extent: rdProjection.extent,
+    source: new WMTSSource({
+      url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts',
+      layer: layername,
+      matrixSet: 'EPSG:28992',
+      format: 'image/png',
+      attributions: BRTA_ATTRIBUTION,
+      projection: rdProjection,
+      tileGrid: new WMTSTileGrid({
+        origin: getTopLeft(rdProjection.getExtent()),
+        resolutions: resolutions,
+        matrixIds: matrixIds
+      }),
+      style: 'default'
+    })
   })
-})
+}
+
+const brtWmtsLayer = getWmtsLayer('brtachtergrondkaart')
+const brtGrijsWmtsLayer = getWmtsLayer('brtachtergrondkaartgrijs')
+const brtPastelWmtsLayer = getWmtsLayer('brtachtergrondkaartpastel')
+const brtWaterWmtsLayer = getWmtsLayer('brtachtergrondkaartwater')
+
 
 const map = new Map({
   layers: [
+    brtWaterWmtsLayer,
+    brtPastelWmtsLayer,
+    brtGrijsWmtsLayer,
     brtWmtsLayer
   ],
   target: 'map',
@@ -49,3 +68,9 @@ const map = new Map({
     zoom: 8
   })
 })
+
+var layerSwitcher = new LayerSwitcher({
+  tipLabel: 'Legend', // Optional label for button
+  groupSelectStyle: 'none' // Can be 'children' [default], 'group' or 'none'
+})
+map.addControl(layerSwitcher)
