@@ -307,7 +307,7 @@
                 "symbol-avoid-edges" : true,
                 "symbol-spacing": 1000,
                 "text-field":"{name}",
-                "text-font": ["Rijksoverheid Sans Text TT Regular_2_0"],
+                "text-font": ["Rijksoverheid Sans Text TT Bold_2_0"],
                 "text-size":{
                     "stops":[
                         [0, 0],

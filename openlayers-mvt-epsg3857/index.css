@@ -3,12 +3,12 @@
     src: url(fonts/rijksoverheidsansheading-bold.ttf) format("truetype");
 }
 @font-face {
-    font-family: "Rijksoverheid Sans Text TT Bold_2_0";
+    font-family: "Rijksoverheid Sans Text TT Regular_2_0";
     src: url(fonts/rijksoverheidsanstext-regular.ttf) format("truetype");
 }
 @font-face {
-    font-family: "Rijksoverheid Sans Text TT Regular_2_0";
-    src: url(fonts/rijksoverheidserif-regular.ttf) format("truetype");
+    font-family: "Rijksoverheid Sans Text TT Italic_2_0";
+    src: url(fonts/rijksoverheidserif-italic.ttf) format("truetype");
 }
 
 #map { height: 100vh; }
