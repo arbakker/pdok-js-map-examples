@@ -1,0 +1,538 @@
+{
+    "version": 8,
+    "name": "data",
+    "glyphs": "https://geodata.nationaalgeoregister.nl/beta/topotiles-viewer/font/{fontstack}/{range}.pbf",
+    "sources": {
+        "wm_vector":{
+            "type": "vector",
+            "url": "https://geodata.nationaalgeoregister.nl/beta/topotiles-viewer/styles/tilejson.json"
+       }
+    },
+    "layers": [
+        {
+            "id":  "background",
+            "type": "background",
+            "paint": {
+                "background-color":"#D6F1E9"
+            }
+        },
+        {
+            "id": "country",
+            "type": "fill",
+            "source": "wm_vector",
+            "source-layer": "admin",
+            "maxzoom": 20,
+            "minzoom": 0,
+            "filter": ["==", "lod1", "country"],
+            "paint": {
+                "fill-color" : "#ffffff",
+                "fill-outline-color": "#cccccc"
+            }
+        },
+        {
+            "id": "water",
+            "type": "fill",
+            "source": "wm_vector",
+            "source-layer": "water",
+            "maxzoom": 20,
+            "minzoom": 0,
+            "paint": {
+                "fill-color" : "#80bde3",
+                "fill-outline-color": "#80bde3"
+            }
+        },
+         {
+            "id": "terrain_z0-Z12",
+            "type": "fill",
+            "source": "wm_vector",
+            "source-layer": "terrain",
+            "maxzoom": 12,
+            "minzoom": 0,
+            "paint": {
+                "fill-color" : {
+                    "property": "lod2",
+                    "type": "categorical",
+                    "stops": [
+                        ["open", "#fefcea"],
+                        ["low_vegetation", "#ffffff"],
+                        ["agriculture", "#ffffff"],
+                        ["closed", "#ffffff"],
+                        ["high_vegetation", "#C3DBB5"]
+                    ],
+                    "default": "#ffffff"
+                }
+            }
+        },
+         {
+            "id": "terrain_z12-Z20",
+            "type": "fill",
+            "source": "wm_vector",
+            "source-layer": "terrain",
+            "maxzoom": 20,
+            "minzoom": 12,
+            "filter": [">=", "z_index", 0],
+            "paint": {
+                "fill-color" : {
+                    "property": "lod2",
+                    "type": "categorical",
+                    "stops": [
+                        ["open", "#fefcea"],
+                        ["low_vegetation", "#ffffff"],
+                        ["agriculture", "#ffffff"],
+                        ["closed", "#ffffff"],
+                        ["high_vegetation", "#C3DBB5"]
+                    ],
+                    "default": "#ffffff"
+                },
+                "fill-outline-color": "#c1c1c1"
+            }
+        },
+        {
+            "id": "water_line",
+            "type": "line",
+            "source": "wm_vector",
+            "source-layer": "water-line",
+            "maxzoom": 20,
+            "minzoom": 10,
+            "paint": {
+                "line-color" : "#80bde3",
+                "line-width": {
+                    "stops":[
+                        [10, 0.1],
+                        [11, 0.3]
+                ],
+                "default": 0.1
+                }
+            }
+        },
+        {
+            "id": "urban_z0-Z12",
+            "type": "fill",
+            "source": "wm_vector",
+            "source-layer": "urban",
+            "maxzoom": 12,
+            "minzoom": 0,
+            "paint": {
+                "fill-color" :{
+                    "property": "lod1",
+                    "type": "categorical",
+                    "stops": [
+                        ["urban_area", "#E3DCE7"],
+                        ["buildings", "#cccccc"]
+                    ],
+                    "default": "#ffffff"
+                },
+                "fill-outline-color": {
+                    "property": "lod1",
+                    "type": "categorical",
+                    "stops": [
+                        ["urban_area", "#E3DCE7"],
+                        ["buildings", "#cccccc"]
+                    ],
+                    "default": "#ffffff"
+                }
+            }
+        },
+        {
+            "id": "urban_z12-Z20",
+            "type": "fill",
+            "source": "wm_vector",
+            "source-layer": "urban",
+            "maxzoom": 20,
+            "minzoom": 12,
+            "filter": [">=", "z_index", 0],
+            "paint": {
+                "fill-color" :{
+                    "property": "lod1",
+                    "type": "categorical",
+                    "stops": [
+                        ["urban_area", "#E3DCE7"],
+                        ["buildings", "#cccccc"]
+                    ],
+                    "default": "#E3DCE7"
+                },
+                "fill-outline-color": {
+                    "property": "lod1",
+                    "type": "categorical",
+                    "stops": [
+                        ["urban_area", "#c1c1c1"],
+                        ["buildings", "#c1c1c1"]
+                    ],
+                    "default": "#c1c1c1"
+                }
+            }
+        },
+        {
+            "id": "roads_case",
+            "type": "line",
+            "source": "wm_vector",
+            "source-layer": "infra",
+            "maxzoom": 20,
+            "minzoom": 6,
+            "filter": ["==", "lod1", "roads"],
+            "layout" :{
+                "line-cap" : "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color" : {
+                    "property": "lod2",
+                    "type": "categorical",
+                    "stops": [
+                        ["local", "#d1c1be"],
+                        ["arterial", "#d1c1be"],
+                        ["highway" , "#E69801"]
+                    ],
+                    "default": "#d1c1be"
+                    
+                },
+                "line-width" : {
+                    "property": "lod2",
+                    "type": "categorical",
+                    "stops": [
+                        ["local", 2],
+                        ["arterial", 3.4],
+                        ["highway" , 4.1]
+                    ],
+                    "default": 2
+                },
+                "line-opacity": 1
+            }
+        },
+        {
+            "id": "roads_fill",
+            "type": "line",
+            "source": "wm_vector",
+            "source-layer": "infra",
+            "maxzoom": 20,
+            "minzoom": 6,
+            "filter": ["==", "lod1", "roads"],
+            "layout" :{
+                "line-cap" : "round",
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color" : {
+                    "property": "lod2",
+                    "type": "categorical",
+                    "stops": [
+                        ["local", "#ffffff"],
+                        ["arterial", "#fdf6bb"],
+                        ["highway" , "#f9e11e"]
+                    ],
+                    "default": "#ffffff"
+
+                },
+                "line-width" : {
+                    "property": "lod2",
+                    "type": "categorical",
+                    "stops": [
+                        [ "local", 1],
+                        ["arterial", 1.8],
+                        ["highway" , 2.1]
+                    ],
+                    "default": 1
+                },
+                "line-opacity": 1
+            }
+        },
+        {
+            "id": "train_case",
+            "type": "line",
+            "source": "wm_vector",
+            "source-layer": "infra",
+            "maxzoom": 20,
+            "minzoom": 8,
+            "filter": ["==", "lod2", "train"],
+            "layout" :{
+                "line-cap" : "round",
+                "line-join" : "round"
+            },
+            "paint":{
+                "line-color": "#999999",
+                "line-width" :  3.5 ,
+                "line-opacity": 1
+            }
+        },
+        {
+            "id": "train_fill",
+            "type": "line",
+            "source": "wm_vector",
+            "source-layer": "infra",
+            "maxzoom": 20,
+            "minzoom": 8,
+            "filter": ["==", "lod2", "train"],
+            "layout" :{
+                "line-cap" : "butt",
+                "line-join" : "round"
+            },
+            "paint":{
+                "line-color": "#ffffff",
+                "line-width" :  2,
+                "line-dasharray": {
+                    "stops":[
+                       [4, [1,3]],
+                       [8 , [2,2.5]],
+                       [10, [2,3]],
+                       [12, [2,3]]
+                    ]
+                    ,"default": [2,2.5]
+                },
+                "line-opacity": 1
+            }
+        },
+         {
+            "id": "province_borders",
+            "type": "line",
+            "source": "wm_vector",
+            "source-layer": "admin",
+            "maxzoom": 20,
+            "minzoom": 0,
+            "filter": ["==", "lod1", "province"],
+            "paint": {
+                "line-color" : "#cccccc",
+                "line-width": 1
+            }
+        },
+        {
+            "id": "labels_highway",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "infra",
+            "maxzoom": 12,
+            "minzoom": 7,
+            "filter": ["==", "lod2", "highway"],
+            "layout": {
+                "symbol-placement": "point",
+                "symbol-avoid-edges" : true,
+                "symbol-spacing": 1000,
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Regular_2_0"],
+                "text-size":{
+                    "stops":[
+                        [0, 0],
+                        [8, 14],
+                        [10, 16]
+                    ], 
+                    "default": 14
+                },
+                "text-max-width": 2,
+                "text-anchor": "center",
+                "text-line-height": 1.5,
+                "text-justify": "center",
+                "text-padding": {
+                    "stops":[
+                        [7, 40],
+                        [9, 50],
+                        [11, 100]
+                    ],
+                    "default": 50
+                },
+                "text-allow-overlap": false
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#FFF",
+                "text-halo-color": "#FF7F7F",
+                "text-halo-width": 5
+            }
+        },
+        {
+            "id": "water_labels",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "label",
+            "maxzoom": 20,
+            "minzoom": 10,
+            "filter": ["==", "lod1", "water"],
+            "layout": {
+                "symbol-placement": "point",
+                "symbol-avoid-edges" : false,
+                "text-rotate": {
+                    "type": "identity",
+                    "property": "rotation"
+                },
+                "text-rotation-alignment":"map",
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Italic_2_0"],
+                "text-size":14,
+                "text-max-width": 100,
+                "text-anchor": "center",
+                "text-line-height": 1.5,
+                "text-justify": "center",
+                "text-padding": 2,
+                "text-allow-overlap": true
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#007bc7"
+            }
+        },
+         {
+            "id": "building_labels",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "label",
+            "maxzoom": 20,
+            "minzoom": 17,
+            "filter": ["==", "lod1", "building_number"],
+            "layout": {
+                "symbol-placement": "point",
+                "symbol-avoid-edges" : false,
+                "text-rotate": {
+                    "type": "identity",
+                    "property": "rotation"
+                },
+                "text-rotation-alignment":"map",
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Regular_2_0"],
+                "text-size":14,
+                "text-max-width": 5,
+                "text-anchor": "center",
+                "text-line-height": 1.5,
+                "text-justify": "center",
+                "text-padding": 5,
+                "text-allow-overlap": false
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#535353"
+            }
+        },
+         {
+            "id": "labels_roads_top10",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "infra",
+            "maxzoom": 15,
+            "minzoom": 11,
+            "filter": ["==", "lod2", "arterial"],
+            "layout": {
+                "symbol-placement": "line",
+                "symbol-avoid-edges" : false,
+                "symbol-spacing" : 10,
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Regular_2_0"],
+                "text-size":{
+                    "stops":[
+                        [11, 14],
+                        [15, 14]
+                    ],
+                    "default":14
+                },
+                "text-rotation-alignment": "map",
+                "text-max-width": 100,
+                "text-anchor": "center",
+                "text-line-height": 1.5,
+                "text-justify": "center",
+                "text-padding": 30,
+                "text-allow-overlap": false
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#535353"
+            }
+        },
+        {
+            "id": "low_prior_labels",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "label",
+            "maxzoom": 20,
+            "minzoom": 8,
+            "filter": ["==", "lod1", "residential"],
+            "layout": {
+                "visibility": "visible",
+                "symbol-placement": "point",
+                "symbol-avoid-edges" : false,
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Bold_2_0"],
+                "text-size":{
+                    "property": "z_index",
+                    "type": "categorical",
+                    "stops":[
+                        [1, 10],
+                        [10, 12],
+                        [100, 14],
+                        [1000, 16]
+                    ],
+                    "default": 10
+                },
+                "text-max-width": 5,
+                "text-anchor": "center",
+                "text-line-height": 1,
+                "text-justify": "center",
+                "text-padding": 20,
+                "text-allow-overlap": false
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#535353"
+            }
+        },
+        {
+            "id": "medium_prior_labels",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "label",
+            "maxzoom": 20,
+            "minzoom": 7,
+            "filter": [">=", "z_index", 10000],
+            "layout": {
+                "visibility": "visible",
+                "symbol-placement": "point",
+                "symbol-avoid-edges" : false,
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Bold_2_0"],
+                 "text-size":{
+                    "property": "z_index",
+                    "type": "categorical",
+                    "stops":[
+                        [10000, 16],
+                        [100000, 18]
+                    ],
+                    "default": 10
+                },
+                "text-max-width": 5,
+                "text-anchor": "center",
+                "text-line-height": 1,
+                "text-justify": "center",
+                "text-padding": 20,
+                "text-allow-overlap": false
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#535353"
+            }
+        },
+         {
+            "id": "high_prior_labels",
+            "type": "symbol",
+            "source": "wm_vector",
+            "source-layer": "label",
+            "maxzoom": 20,
+            "minzoom": 5,
+            "filter": ["==", "z_index", 1000000],
+            "layout": {
+                "visibility": "visible",
+                "symbol-placement": "point",
+                "symbol-avoid-edges" : false,
+                "text-field":"{name}",
+                "text-font": ["Rijksoverheid Sans Text TT Bold_2_0"],
+                "text-size": 20,
+                "text-max-width": 5,
+                "text-anchor": "center",
+                "text-line-height": 1,
+                "text-justify": "center",
+                "text-padding": 20,
+                "text-allow-overlap": false
+            },
+            "paint":{
+                "text-opacity": 1,
+                "text-color": "#535353"
+            }
+        }
+       
+    ]
+}
+

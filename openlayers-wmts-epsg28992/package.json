@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "ol": "^6.2.1",
     "ol-layerswitcher": "^3.5.0",
