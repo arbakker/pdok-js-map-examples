@@ -20,7 +20,7 @@ const mvtLayer = new VectorTileLayer({
         type: "vector",
         attributions: BRTA_ATTRIBUTION,
         format: new MVT(),
-        url: `http://geodata.nationaalgeoregister.nl/beta/topotiles/{z}/{x}/{y}.pbf`,
+        url: `https://geodata.nationaalgeoregister.nl/beta/topotiles/{z}/{x}/{y}.pbf`,
         maxZoom: 14
     })
 })
