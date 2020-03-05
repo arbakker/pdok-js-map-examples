@@ -13,3 +13,6 @@ Example applications:
 - OpenLayers vector tiles layer in Webmercator (EPSG:3857)
     - [code](./openlayers-mvt-epsg3857/README.md)
     - [demo application](https://arbakker.github.io/pdok-js-map-examples/openlayers-mvt-epsg3857/index.html)
+- OpenLayers PDOK Locatie Server Webmercator (EPSG:3857)
+    - [code](./openlayers-locatie-server/README.md)
+    - [demo application](https://arbakker.github.io/pdok-js-map-examples/openlayers-locatie-server/index.html)
