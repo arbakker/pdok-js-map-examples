@@ -14,7 +14,7 @@
   "dependencies": {
     "ol": "^6.2.1",
     "ol-layerswitcher": "^3.5.0",
-    "ol-mapbox-style": "^6.0.1",
+    "ol-mapbox-style": "^v6.1.1",
     "proj4": "^2.6.0"
   },
   "devDependencies": {
