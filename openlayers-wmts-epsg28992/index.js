@@ -53,7 +53,6 @@ const brtGrijsWmtsLayer = getWmtsLayer('brtachtergrondkaartgrijs')
 const brtPastelWmtsLayer = getWmtsLayer('brtachtergrondkaartpastel')
 const brtWaterWmtsLayer = getWmtsLayer('brtachtergrondkaartwater')
 
-
 const map = new Map({
   layers: [
     brtWaterWmtsLayer,

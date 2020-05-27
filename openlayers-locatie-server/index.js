@@ -122,7 +122,7 @@ var LocationServerControl = /* @__PURE__ */(function (Control) {
       }
     })
   }
-  if (Control) LocationServerControl.__proto__ = Control // eslint-disable-no-proto
+  if (Control) LocationServerControl.__proto__ = Control // eslint-disable-line no-proto
   LocationServerControl.prototype = Object.create(Control && Control.prototype)
   LocationServerControl.prototype.constructor = LocationServerControl
   return LocationServerControl
