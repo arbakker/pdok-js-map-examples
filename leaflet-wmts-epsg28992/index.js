@@ -8,16 +8,16 @@ import './index.css'
 const BRTA_ATTRIBUTION = 'Kaartgegevens: © <a href="http://www.cbs.nl">CBS</a>, <a href="http://www.kadaster.nl">Kadaster</a>, <a href="http://openstreetmap.org">OpenStreetMap</a><span class="printhide">-auteurs (<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>).</span>'
 
 function getWMTSLayer (layername, attribution) {
-  return L.tileLayer(`https://geodata.nationaalgeoregister.nl/tiles/service/wmts/${layername}/EPSG:28992/{z}/{x}/{y}.png`, { // eslint-disable-line no-undef
+  return L.tileLayer(`https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/${layername}/EPSG:28992/{z}/{x}/{y}.png`, { // eslint-disable-line no-undef
     WMTS: false,
     attribution: attribution
   })
 }
 
-const brtRegular = getWMTSLayer('brtachtergrondkaart', BRTA_ATTRIBUTION)
-const brtGrijs = getWMTSLayer('brtachtergrondkaartgrijs', BRTA_ATTRIBUTION)
-const brtPastel = getWMTSLayer('brtachtergrondkaartpastel', BRTA_ATTRIBUTION)
-const brtWater = getWMTSLayer('brtachtergrondkaartwater', BRTA_ATTRIBUTION)
+const brtRegular = getWMTSLayer('standaard', BRTA_ATTRIBUTION)
+const brtGrijs = getWMTSLayer('grijs', BRTA_ATTRIBUTION)
+const brtPastel = getWMTSLayer('pastel', BRTA_ATTRIBUTION)
+const brtWater = getWMTSLayer('water', BRTA_ATTRIBUTION)
 
 // see "Nederlandse richtlijn tiling" https://www.geonovum.nl/uploads/standards/downloads/nederlandse_richtlijn_tiling_-_versie_1.1.pdf
 // Resolution (in pixels per meter) for each zoomlevel

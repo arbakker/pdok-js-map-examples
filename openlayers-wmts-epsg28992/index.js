@@ -34,7 +34,8 @@ function getWmtsLayer (layername) {
     title: `${layername} WMTS`,
     extent: rdProjection.extent,
     source: new WMTSSource({
-      url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts',
+      url: 'https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0',
+      crossOrigin: 'Anonymous',
       layer: layername,
       matrixSet: 'EPSG:28992',
       format: 'image/png',
@@ -50,10 +51,10 @@ function getWmtsLayer (layername) {
   })
 }
 
-const brtWmtsLayer = getWmtsLayer('brtachtergrondkaart')
-const brtGrijsWmtsLayer = getWmtsLayer('brtachtergrondkaartgrijs')
-const brtPastelWmtsLayer = getWmtsLayer('brtachtergrondkaartpastel')
-const brtWaterWmtsLayer = getWmtsLayer('brtachtergrondkaartwater')
+const brtWmtsLayer = getWmtsLayer('standaard')
+const brtGrijsWmtsLayer = getWmtsLayer('grijs')
+const brtPastelWmtsLayer = getWmtsLayer('pastel')
+const brtWaterWmtsLayer = getWmtsLayer('water')
 
 const map = new Map({
   layers: [

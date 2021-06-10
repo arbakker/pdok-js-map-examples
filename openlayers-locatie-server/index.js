@@ -13,7 +13,6 @@ import VectorLayer from 'ol/layer/Vector'
 import { Vector as VectorSource } from 'ol/source'
 
 const locatieServerUrl = 'https://geodata.nationaalgeoregister.nl/locatieserver/v3'
-
 const projection = getProjection('EPSG:3857')
 const projectionExtent = projection.getExtent()
 const size = getWidth(projectionExtent) / 256
@@ -29,9 +28,10 @@ for (var z = 0; z < 20; ++z) {
 const baseMapLayer = new TileLayer({
   extent: projectionExtent,
   source: new WMTSSource({
-    url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts',
-    layer: 'brtachtergrondkaartgrijs',
+    url: 'https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0',
+    layer: 'grijs',
     matrixSet: 'EPSG:3857',
+    crossOrigin: 'Anonymous',
     format: 'image/png',
     attributions: 'BRT achtergrondkaart: <a href="http://www.kadaster.nl">Kadaster</a>',
     tileGrid: new WMTSTileGrid({

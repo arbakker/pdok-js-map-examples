@@ -12,18 +12,18 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "ol": "^6.2.1",
-    "ol-layerswitcher": "^3.5.0",
-    "ol-mapbox-style": "^v6.1.1",
-    "proj4": "^2.6.0"
+    "ol": "^6.5.0",
+    "ol-layerswitcher": "^3.8.3",
+    "ol-mapbox-style": "^6.3.2",
+    "parcel": "^2.0.0-nightly.714",
+    "proj4": "^2.7.2"
   },
   "devDependencies": {
-    "eslint": "^7.1.0",
+    "eslint": "^7.28.0",
     "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "parcel-bundler": "^1.12.4"
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^4.1.0"
   }
 }
