@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
-    "build": "parcel build --public-url . index.html"
+    "build": "parcel build --public-url . index.html && cp -r public/* dist/"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "maplibre-gl": "^2.0.0-pre.1",
     "ol": "^6.5.0",
     "ol-layerswitcher": "^3.8.3",
     "ol-mapbox-style": "^6.3.2",
