@@ -2,7 +2,6 @@
   "name": "pdok-leaflet-wmts-epsg28992",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
@@ -18,6 +17,11 @@
     "proj4leaflet": "^1.0.2"
   },
   "devDependencies": {
-    "parcel": "^2.0.0-nightly.714"
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "parcel": "^v2.0.0-rc.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arbakker/pdok-js-map-examples.git"
   }
 }

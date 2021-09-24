@@ -1,8 +1,7 @@
 {
-  "name": "pdok-openlayers-mvt-epsg3857",
+  "name": "pdok-maplibregl-mvt-epsg3857",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
@@ -13,11 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "maplibre-gl": "^2.0.0-pre.1",
-    "ol": "^6.5.0",
-    "ol-layerswitcher": "^3.8.3",
-    "ol-mapbox-style": "^6.3.2",
-    "parcel": "^2.0.0-nightly.714",
-    "proj4": "^2.7.2"
+    "parcel": "^v2.0.0-rc.0"
   },
   "devDependencies": {
     "eslint": "^7.28.0",
@@ -26,5 +21,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-standard": "^4.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arbakker/pdok-js-map-examples.git"
   }
 }
