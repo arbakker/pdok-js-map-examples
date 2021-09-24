@@ -7,7 +7,7 @@ while read -r DIR; do
     rm -rf gh-pages/$(basename "$DIR")
     mkdir -p gh-pages
     cp -r "$DIR/dist" gh-pages/$(basename "$DIR")
-    app_li="${app_li}<li><a href=\"$(basename "$DIR")/index.html\">$(basename "$DIR")</a></li>"
+    app_li="${app_li}<li><a href=\"$(basename "$DIR")/\">$(basename "$DIR")</a></li>"
 done < <(find . -maxdepth 1 -type d -regextype posix-egrep -regex ".*(leaflet|openlayers|maplibre).*" | sort)
 app_ul="<ul>${app_li}</ul>"
 sed "s#{{ applications_list }}#${app_ul}#g" index/index.html >gh-pages/index.html
