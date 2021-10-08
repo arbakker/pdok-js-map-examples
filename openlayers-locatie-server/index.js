@@ -6,8 +6,6 @@ import WMTSTileGrid from 'ol/tilegrid/WMTS.js'
 import { get as getProjection, fromLonLat } from 'ol/proj'
 import { getTopLeft, getWidth } from 'ol/extent.js'
 import { Control } from 'ol/control'
-import { transformExtent } from 'ol/proj.js'
-import 'autocompleter/autocomplete.css'
 import VectorLayer from 'ol/layer/Vector'
 import { Vector as VectorSource } from 'ol/source'
 import LocationServerControl from './locatie-server-control'
@@ -64,7 +62,7 @@ const map = new Map({
 
 function locationSelectedHandler (event) {
   // let extentRd = transformExtent(event.detail.extent, 'EPSG:3857', rdProjection)
-  map.getView().fit(event.detail.extent, { maxZoom: 14 })
+  map.getView().fit(event.detail.extent, { maxZoom: 18 })
 }
 
 function addLsInput () {
