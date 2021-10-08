@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-html": "^2.0.0-nightly.611",
+    "@parcel/transformer-inline-string": "^2.0.0-rc.0",
     "@parcel/transformer-posthtml": "^2.0.0-nightly.611",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.1",

@@ -1,0 +1,34 @@
+button{
+    border: solid 1px #cfd6e6;
+    border-radius: 0 3px 3px 0;
+    border-left: 0px;
+    width: 3em;
+}
+.parentControl{
+    background-color: white;
+    height: 36px;
+}
+input{
+    outline: none;
+}
+input[type=text]{
+    border: solid 1px #cfd6e6;
+    border-radius: 3px;
+    width: 21em;
+    padding-left: 0.5em;
+}
+
+select{
+    border: solid 1px #cfd6e6;
+    border-radius: 3px;
+    width: 10em;
+    padding-left: 0.5em;    
+}
+
+input[type=checkbox] {
+    transform: scale(1.1);
+}
+
+input:focus{
+    border: solid 2px #cfd6e6 !important;
+}
