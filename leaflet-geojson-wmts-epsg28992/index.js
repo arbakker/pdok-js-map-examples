@@ -10,7 +10,8 @@ const BRTA_ATTRIBUTION = 'Kaartgegevens: © <a href="http://www.cbs.nl">CBS</a>,
 function getWMTSLayer (layername, attribution) {
   return L.tileLayer(`https://service.pdok.nl/brt/achtergrondkaart/wmts/v2_0/${layername}/EPSG:28992/{z}/{x}/{y}.png`, { // eslint-disable-line no-undef
     WMTS: false,
-    attribution: attribution
+    attribution: attribution,
+    crossOrigin: true
   })
 }
 
@@ -36,7 +37,8 @@ var map = L.map('mapid', { // eslint-disable-line no-undef
     brtRegular
   ],
   center: [52.176997, 5.200000],
-  zoom: 3
+  zoom: 3, 
+  
 })
 
 var baseLayers = {
@@ -47,3 +49,23 @@ var baseLayers = {
 }
 
 L.control.layers(baseLayers).addTo(map) // eslint-disable-line no-undef
+
+
+var geojsonMarkerOptions = {
+  radius: 5,
+  fillColor: "#ff7800",
+  color: "#000",
+  weight: 1,
+  opacity: 1,
+  fillOpacity: 0.8
+};
+
+fetch('https://service.pdok.nl/prorail/spoorwegen/wfs/v1_0?request=GetFeature&service=WFS&version=2.0.0&outputFormat=application/json&srsname=EPSG:4326&count=100&typename=spoorwegen:station')
+  .then(response => response.json())
+  .then(data => {
+    L.geoJSON(data, {
+      pointToLayer: function(feature, latlng) {
+        return L.circleMarker(latlng, geojsonMarkerOptions);
+      }
+    }).addTo(map);
+  });
