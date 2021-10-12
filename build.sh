@@ -12,7 +12,7 @@ while read -r DIR; do
     npm install .
     npm run-script build
     cd ..
-    cp -r "$DIR/dist" dist/$(basename "$DIR")
+    cp -r "$DIR/dist" "dist/$(basename "$DIR")"
     app_li="${app_li}<li><a href=\"$(basename "$DIR")/\">$(basename "$DIR")</a></li>"
 done < <(find . -maxdepth 1 -type d -regextype posix-egrep -regex ".*(leaflet|openlayers|maplibre).*" | sort)
 app_ul="<ul>${app_li}</ul>"
