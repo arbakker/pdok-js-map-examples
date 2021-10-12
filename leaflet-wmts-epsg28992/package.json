@@ -1,0 +1,29 @@
+{
+  "name": "pdok-leaflet-wmts-epsg28992",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html",
+    "build": "parcel build --public-url . index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "leaflet": "^1.7.1",
+    "leaflet.control.layers.tree": "^1.1.0",
+    "proj4js": "^10.0.0",
+    "proj4leaflet": "^1.0.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-html": "^2.0.0-nightly.611",
+    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-posthtml": "^2.0.0-nightly.611",
+    "parcel": "^v2.0.0-rc.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/arbakker/pdok-js-map-examples.git"
+  }
+}
