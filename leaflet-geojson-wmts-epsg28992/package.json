@@ -17,10 +17,10 @@
     "proj4leaflet": "^1.0.2"
   },
   "devDependencies": {
-    "@parcel/transformer-html": "^2.0.0-nightly.611",
-    "@parcel/transformer-image": "^2.0.0-rc.0",
+    "@parcel/transformer-html": "^2.8.2",
+    "@parcel/transformer-image": "^2.8.2",
     "@parcel/transformer-posthtml": "^2.0.0-nightly.611",
-    "parcel": "^v2.0.0-rc.0"
+    "parcel": "^v2.8.2"
   },
   "repository": {
     "type": "git",
