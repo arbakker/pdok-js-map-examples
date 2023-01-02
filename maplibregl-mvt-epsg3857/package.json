@@ -12,10 +12,10 @@
   "license": "MIT",
   "dependencies": {
     "maplibre-gl": "^2.0.0-pre.1",
-    "parcel": "^v2.0.0-rc.0"
+    "parcel": "^v2.8.2"
   },
   "devDependencies": {
-    "@parcel/transformer-html": "^2.0.0-nightly.611",
+    "@parcel/transformer-html": "^2.8.2",
     "@parcel/transformer-posthtml": "^2.0.0-nightly.611",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^14.1.1",
